@@ -3,7 +3,7 @@ const path = require('path');
 const juice = require('juice');
 const debug = require('debug')('email-templates');
 const htmlToText = require('html-to-text');
-const I18N = require('@ladjs/i18n');
+// const I18N = require('@ladjs/i18n');
 const autoBind = require('auto-bind');
 const nodemailer = require('nodemailer');
 const consolidate = require('consolidate');
@@ -161,20 +161,20 @@ class Email {
         `Engine not found for the ".${paths.ext}" file extension`
       );
 
-    if (_.isObject(this.config.i18n)) {
-      const i18n = new I18N(
-        Object.assign({}, this.config.i18n, {
-          register: locals
-        })
-      );
+    // if (_.isObject(this.config.i18n)) {
+    //   const i18n = new I18N(
+    //     Object.assign({}, this.config.i18n, {
+    //       register: locals
+    //     })
+    //   );
 
-      // support `locals.user.last_locale`
-      // (e.g. for <https://lad.js.org>)
-      if (_.isObject(locals.user) && _.isString(locals.user.last_locale))
-        locals.locale = locals.user.last_locale;
+    //   // support `locals.user.last_locale`
+    //   // (e.g. for <https://lad.js.org>)
+    //   if (_.isObject(locals.user) && _.isString(locals.user.last_locale))
+    //     locals.locale = locals.user.last_locale;
 
-      if (_.isString(locals.locale)) i18n.setLocale(locals.locale);
-    }
+    //   if (_.isString(locals.locale)) i18n.setLocale(locals.locale);
+    // }
 
     const res = await Promise.promisify(renderFn)(filePath, locals);
     // transform the html with juice using remote paths

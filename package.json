@@ -16,7 +16,6 @@
     "Nick Baugh <niftylettuce@gmail.com> (http://niftylettuce.com)"
   ],
   "dependencies": {
-    "@ladjs/i18n": "^1.0.0",
     "auto-bind": "^2.0.0",
     "bluebird": "^3.5.3",
     "consolidate": "^0.15.1",
